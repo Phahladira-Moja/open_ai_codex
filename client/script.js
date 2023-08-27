@@ -23,7 +23,7 @@ function typeText(element, text) {
 
   let interval = setInterval(() => {
     if (index < text.length) {
-      element.innerHtml += text.charAt(index);
+      element.textContent += text.charAt(index);
       index++;
     } else {
       clearInterval(interval);
@@ -88,13 +88,12 @@ const handleSubmit = async (e) => {
   });
 
   clearInterval(loadInterval);
+
   messageDiv.innerHTML = "";
 
   if (response.ok) {
     const data = await response.json();
     const parsedData = data.bot.trim();
-
-    console.log(parsedData);
 
     typeText(messageDiv, parsedData);
   } else {
